@@ -1,6 +1,6 @@
 const API = {
   async get(path) {
-    const r = await fetch(`/api${path}`);
+    const r = await fetch(`/api${path}`, { cache: 'no-store' });
     if (!r.ok) throw new Error(`GET ${path}: ${r.status}`);
     return r.json();
   },
@@ -77,6 +77,18 @@ async function handleRoute() {
 }
 
 window.addEventListener('hashchange', handleRoute);
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a.nav-link');
+  if (link) {
+    const target = link.getAttribute('href')?.slice(1) || '/';
+    const current = location.hash.slice(1) || '/';
+    if (target === current) {
+      e.preventDefault();
+      handleRoute();
+    }
+  }
+});
 
 export { API, app, showToast, registerRoute, navigate, handleRoute };
 
