@@ -1,0 +1,9 @@
+# F5 AI Guardrails Performance Suite Dependencies
+# Core:
+aiohttp>=3.9.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+
+# Optional (only needed if using exact HuggingFace tokenization via --tokenizer-model):
+# transformers>=4.36.0

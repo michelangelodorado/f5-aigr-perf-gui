@@ -1,0 +1,8 @@
+wheels_linux/
+results/
+data/
+__pycache__/
+*.pyc
+.DS_Store
+docs/
+.git/
